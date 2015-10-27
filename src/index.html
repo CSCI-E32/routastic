@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="styles.css"/>
+    <script src="vendors.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body ng-app="routastic" ng-cloak class="container">
+    <h1>Hello Routastic</h1>
+    <nav>
+      <ul class="nav nav-tabs" role="tablist" ng-controller="TabController as tc">
+        <li role="presentation" ng-class="{active:tc.active('list')}"><a href="#list" aria-controls="list" role="tab" data-toggle="tab">List</a></li>
+        <li role="presentation" ng-class="{active:tc.active('add')}"><a href="#add" aria-controls="add user" role="tab" data-toggle="tab">Add User</a></li>
+      </ul>
+    </nav>
+    <div ng-view class="well"></div>
+
+  </body>
+</html>
