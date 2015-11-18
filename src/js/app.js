@@ -10,13 +10,15 @@ app.controller('TabController', ['$location', function($location){
 app.controller('ListController', ['Names', '$scope', function(Names, $scope){
   var vm = this;
   vm.names = Names;
-  Names.get();
+  if(Names.list.length == 0){
+    Names.get();
+  }
 }]);
 
 app.controller('AddController', ['Names', '$location', '$scope', function(Names, $location, $scope){
   var vm = this;
   vm.addName = function(){
-    Names.push(vm.name);
+    Names.list.push(vm.name);
     $location.path('/list');
   };
 }]);
@@ -36,7 +38,7 @@ app.service('Names', ['$http', function($http){
       console.log(response);
       console.log(response.data);
       if(callback){
-        callback();        
+        callback();
       }
     }, function(response){
       console.log(response);
